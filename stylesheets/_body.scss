@@ -1,13 +1,66 @@
+// Basic wrapper
 .wrapper {
   margin: 0 auto;
   margin-top: 250px;
-  width: 25%;
-}
-
-#guessWord {
+  width: 80%;
   text-align: center;
 }
 
+// Input box
 #testInput {
   border: 1px solid;
 }
+
+// Holds the dynamically-created divs holding '_' and correctly guessed letters
+#guessWord {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+// Individual dynamically-created divs
+.letterBox {
+  height: 20px;
+  width: 20px;
+  border: 1px solid;
+  padding: 10px 10px;
+  text-align: center;
+}
+
+// Section holding buttons and input box
+.playerInputSec {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Buttons
+.gameButton {
+  font-size: 0.85em;
+}
+
+// Hint section
+// #wordHint {
+//   margin: 0 auto;
+//   width: 75%;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
