@@ -7,8 +7,8 @@ var theWord = [];
 var guessWord = [];
 var artistIndex = 0;
 var isPlaying = false;
-// var numGuesses = 5;
-// var numWins = 0;
+var numGuessesLeft = 5;
+var numWins = 0;
 
 // Function that retrieves a random word from the array
 function getWord() {
@@ -125,9 +125,41 @@ $("#submitButton").click(function() {
   clearInput();
 
   if(isPlaying) {
-    winCheck();
+    setTimeout(function() {
+      winCheck();
+    })
   }
 })
 
 // called on hitting submit
 // function that takes input and checks
+
+// shuffle
+// An equivalent version which shuffles the array in the opposite direction (from lowest index to highest) is:
+//
+// -- To shuffle an array a of n elements (indices 0..n-1):
+// for i from 0 to n−2 do
+//      j ← random integer such that i ≤ j < n
+//      exchange a[i] and a[j]
+
+/**
+ * Randomize array element order in-place.
+ * Using Durstenfeld shuffle algorithm.
+ */
+
+ var testArr = [1, 2, 5, 9, 3];
+ var artistIndexTest = Math.floor(Math.random() * testArr.length);
+
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
+
+// -- To shuffle an array a of n elements (indices 0..n-1):
+// for i from n−1 downto 1 do
+//      j ← random integer such that 0 ≤ j ≤ i
+//      exchange a[j] and a[i]
