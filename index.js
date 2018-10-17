@@ -1,7 +1,8 @@
 var arrayOfArtists = ['Vincent Van Gogh', 'Banksy', 'Michelangelo', 'Pablo Picasso', 'Andy Warhol', 'Leonardo Da Vinci', 'Claude Monet', 'Jackson Pollock', 'Mark Rothko', 'Roy Lichtenstein', 'Salvador Dali', "Georgia O'Keefe"];
-var completedArtists = [];
+var arrayOfArtistsCopy = arrayOfArtists;
 
 var arrayOfHints = ['Dutch Post-Impressionist painter whose works are characterized by bold colors and dramatic brushstrokes. Arguably the most famous painter in the history of Western art.', 'Street artist. Often implements satire, dark humor, and political/social commentary with a distinctive stenciling technique.', 'Italian sculptor and painter during the High Renaissance. His impassioned, highly personal style eventually lead to the development of Mannerism.', "Spanish artist most known for co-founding the Cubist movement, the collage, the invention of the 'assemblage, and a wide variety of artistic styles.", 'American pop artist that explored the relationship between artistic expression, celebrity culture, and advertising.', 'Italian polymath, mastering multiple areas of interest such as painting, invention, sculpting, biology, mathematics, anatomy, etc. He produced what is widely considered the most famous painting ever created.', 'French painter and founder of French Impressionism. He is known for his exceptional understanding and portrayal of the effects of light on color and of the juxtaposition of colors with each other.', "American painter and major figure of the Abstract Expressionist movement. Most known for his unique style of 'drip' painting.", 'American artist famous for his large-scale color field paintings.', 'American pop artist, often producing works with precise compositions that documented while they parodied - a concept inspired by the comic strip.', 'Prominent Spanish surrealist with expansive skills in painting, sculpture, and film. Many considered his personality, mannerisms, and behavior to be rather eccentric and grandiose - especially indicative of his wild imagination.', 'American artist best known for her paintings of enlarged flowers, often evoking veiled representations of female genitalia.'];
+var arrayOfHintsCopy = arrayOfHints;
 
 var theWord = [];
 var guessWord = [];
@@ -68,6 +69,7 @@ function createGuessWord() {
   }
 }
 
+// Function that grabs a hint from array equal to corresponding index
 function getHint() {
   if(isPlaying) {
     $("#wordHint").text(arrayOfHints[artistIndex]);
@@ -76,12 +78,20 @@ function getHint() {
 
 // Checks a letter (letter will be drawn from input - see #submitButton Event Listener)
 function checkLetter(letter) {
-  var arrayOfBoxes = document.getElementsByClassName('letterBox');
-
-  for(let z = 0; z < theWord.length; z++) {
-    if(letter.toLowerCase() == theWord[z].toLowerCase()) {
-      guessWord[z] = theWord[z];
-      $("#box" + z).text(theWord[z]);
+  // Checks if the input is a letter
+  if(/[a-zA-Z]/.test(letter)) {
+    // Checks if the letter is in the word (check Upper and Lower)
+    if(theWord.indexOf(letter.toUpperCase()) !== -1 || theWord.indexOf(letter.toLowerCase()) !== -1) {
+      for(let z = 0; z < theWord.length; z++) {
+        if(letter.toLowerCase() == theWord[z].toLowerCase()) {
+          guessWord[z] = theWord[z];
+          $("#box" + z).text(theWord[z]);
+        }
+      }
+    }
+    else {
+      numGuessesLeft--;
+      $("#playerGuesses").text("Guesses: " + numGuessesLeft);
     }
   }
 }
@@ -94,16 +104,30 @@ function clearHint() {
   $("#wordHint").val('');
 }
 
-// Alert pops up before box is changed *
+// Checks if the user has won
 function winCheck() {
   if(guessWord.indexOf("_") == -1) {
     alert("You have won!");
+    isPlaying = false;
+    clearHint();
+
+    numWins++;
+    $("#playerWins").text("Wins: " + numWins);
+  }
+}
+
+// Checks if the user has no more incorrect guesses available
+function loseCheck() {
+  if(numGuessesLeft == 0) {
+    alert("Nice try!");
     isPlaying = false;
     clearHint();
   }
 }
 
 function startGame() {
+  numGuessesLeft = 5;
+  $("#playerGuesses").text("Guesses: 5");
   getWord();
   createGuessWord();
   isPlaying = true;
@@ -127,6 +151,7 @@ $("#submitButton").click(function() {
   if(isPlaying) {
     setTimeout(function() {
       winCheck();
+      loseCheck();
     })
   }
 })
@@ -147,17 +172,17 @@ $("#submitButton").click(function() {
  * Using Durstenfeld shuffle algorithm.
  */
 
- var testArr = [1, 2, 5, 9, 3];
- var artistIndexTest = Math.floor(Math.random() * testArr.length);
-
-function shuffleArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-}
+//  var testArr = [1, 2, 5, 9, 3];
+//  var artistIndexTest = Math.floor(Math.random() * testArr.length);
+//
+// function shuffleArray(array) {
+//     for (var i = array.length - 1; i > 0; i--) {
+//         var j = Math.floor(Math.random() * (i + 1));
+//         var temp = array[i];
+//         array[i] = array[j];
+//         array[j] = temp;
+//     }
+// }
 
 // -- To shuffle an array a of n elements (indices 0..n-1):
 // for i from n−1 downto 1 do
