@@ -1,4 +1,5 @@
 // Consider storing all information on artist in one 'Artist' object {name: x, description: y, artwork: z} so they are always "together"
+// This way, you could use the Durstenfeld shuffle and simply go 1, 2, 3, etc. and reshuffle every "round" instead of copying data (less efficient)
 var arrayOfArtists = ['Vincent Van Gogh', 'Banksy', 'Michelangelo', 'Pablo Picasso', 'Andy Warhol', 'Leonardo Da Vinci', 'Claude Monet', 'Jackson Pollock', 'Mark Rothko', 'Roy Lichtenstein', 'Salvador Dali', "Georgia O'Keefe"];
 var arrayOfArtistsCopy = arrayOfArtists.slice(0, arrayOfArtists.length);
 
@@ -8,6 +9,7 @@ var arrayOfHintsCopy = arrayOfHints.slice(0, arrayOfHints.length);
 var arrayOfArtwork = ['artwork/vangogh.jpg', 'artwork/banksy.jpg', 'artwork/michelangelo.jpg', 'artwork/picasso.jpg', 'artwork/warhol.jpg', 'artwork/davinci.jpg', 'artwork/monet.jpg', 'artwork/pollock.jpg', 'artwork/rothko.jpg', 'artwork/lichtenstein.jpg', 'artwork/dali.jpg', 'artwork/okeeffe.jpg'];
 var arrayOfArtworkCopy = arrayOfArtwork.slice(0, arrayOfArtwork.length);
 
+// Variables
 var theWord = [];
 var guessWord = [];
 var artistIndex = 0;
@@ -21,6 +23,7 @@ function getWord() {
   if(arrayOfArtists.length == 0) {
     arrayOfArtists = arrayOfArtistsCopy.slice(0, arrayOfArtistsCopy.length);
     arrayOfHints = arrayOfHintsCopy.slice(0, arrayOfHintsCopy.length);
+    arrayOfArtwork = arrayOfArtworkCopy.slice(0, arrayOfArtworkCopy.length);
   }
 
   // Generates a random number between 0 and arrayOfArtists.length
@@ -86,6 +89,7 @@ function getHint() {
   }
 }
 
+// Function that grabs the artwork from array equal to corresponding index
 function getArtwork() {
   if(isPlaying) {
     $("#artwork").css({
@@ -115,6 +119,7 @@ function checkLetter(letter) {
   }
 }
 
+// Simple clearing functions
 function clearInput() {
   $("#letterInput").val('');
 }
@@ -139,9 +144,10 @@ function winCheck() {
     numWins++;
     $("#playerWins").text("Wins: " + numWins);
 
-    // Remove artist and hint from arrays
+    // Remove artist, hint, and artwork from arrays
     arrayOfArtists.splice(artistIndex, 1);
     arrayOfHints.splice(artistIndex, 1);
+    arrayOfArtwork.splice(artistIndex, 1);
   }
 }
 
@@ -162,6 +168,8 @@ function loseCheck() {
   }
 }
 
+// Main function - starts the game and acts as the "next" button
+// Possibly try setting a timeout so that after 5 - 10 seconds, after displaying everything (if loss or win), this function or "next" button is triggered
 function startGame() {
   isPlaying = true;
   numGuessesLeft = 7;
@@ -176,6 +184,7 @@ function startGame() {
   console.log(guessWord);
 }
 
+// Event Listeners
 $("#startButton").click(function() {
   startGame();
 })
@@ -196,35 +205,8 @@ $("#submitButton").click(function() {
   }
 })
 
-// called on hitting submit
-// function that takes input and checks
+// Try adding functionality where typing one letter will match a div's content (ex. past mini-project) and upon pressing ENTER will trigger what is currently the submit button's function.
 
-// shuffle
-// An equivalent version which shuffles the array in the opposite direction (from lowest index to highest) is:
-//
-// -- To shuffle an array a of n elements (indices 0..n-1):
-// for i from 0 to n−2 do
-//      j ← random integer such that i ≤ j < n
-//      exchange a[i] and a[j]
+// One input box to try and guess the word outright?
 
-/**
- * Randomize array element order in-place.
- * Using Durstenfeld shuffle algorithm.
- */
-
-//  var testArr = [1, 2, 5, 9, 3];
-//  var artistIndexTest = Math.floor(Math.random() * testArr.length);
-//
-// function shuffleArray(array) {
-//     for (var i = array.length - 1; i > 0; i--) {
-//         var j = Math.floor(Math.random() * (i + 1));
-//         var temp = array[i];
-//         array[i] = array[j];
-//         array[j] = temp;
-//     }
-// }
-
-// -- To shuffle an array a of n elements (indices 0..n-1):
-// for i from n−1 downto 1 do
-//      j ← random integer such that 0 ≤ j ≤ i
-//      exchange a[j] and a[i]
+// Style it better
