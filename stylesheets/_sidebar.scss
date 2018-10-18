@@ -1,0 +1,78 @@
+// Sidebar Grid
+.sidebar {
+  display: grid;
+  grid-template-rows: 0.4fr 0.25fr 1fr 0.6fr 0.55fr 0.25fr;
+  background-color: $light-grey;
+}
+
+// Immediate children divs center content
+.sidebar > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+// Title
+#gameTitle {
+  font-size: 2.25em;
+  letter-spacing: 2px;
+  color: $light-mint;
+  text-shadow: -1px 0 $dark-grey, 0 1px $dark-grey, 1px 0 $dark-grey, 0 -1px $dark-grey;
+}
+
+#titleUnderline {
+  height: 5px;
+  width: 90%;
+  background-color: $light-mint;
+  border: 1px solid $dark-grey;
+}
+
+// Affects all sidebar section headers
+.sidebarSecHeader {
+  font-size: 1.15em;
+  color: $dark-grey;
+  text-decoration: underline;
+}
+
+// Game Buttons
+.gameButton {
+  padding: 7px 10px;
+  cursor: pointer;
+  background-color: $light-mint;
+  border: 1px solid $dark-grey;
+  color: $dark-grey;
+  font-size: 1.1em;
+}
+
+.gameButton:hover {
+  background-color: $dark-grey;
+  border: 1px solid $light-mint;
+  color: $light-mint;
+}
+
+// Letter Input
+#letterInput {
+  font-size: 11em;
+  color: $light-mint;
+  text-shadow: -1px 0 $dark-grey, 0 1px $dark-grey, 1px 0 $dark-grey, 0 -1px $dark-grey;
+}
+
+// Guess Word Input
+#wordInput {
+  width: 65%;
+  height: 18%;
+  font-size: 1.3em;
+  margin: 10% 0 5% 0;
+  border: 1px solid;
+  text-align: center;
+}
+
+// Player stats
+.playerStats {
+  font-size: 2em;
+  color: $light-mint;
+  text-shadow: -1px 0 $dark-grey, 0 1px $dark-grey, 1px 0 $dark-grey, 0 -1px $dark-grey;
+  font-weight: 600;
+  margin: 1% 0 2% 0;
+}

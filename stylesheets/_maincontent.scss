@@ -1,0 +1,93 @@
+// Main Wrapper Grid
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 0.275fr 1fr;
+  margin: 0 auto;
+}
+
+// Main Content Grid
+.maincontent {
+  display: grid;
+  grid-template-rows: 0.4fr 0.2fr 1fr;
+}
+
+// Immediate children divs center content
+.maincontent > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid gray;
+}
+
+// Guess Display Section
+#guessDisplay {
+  height: 70%;
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid blue;
+}
+
+#wordHintSec {
+  height: 80%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#wordHint {
+  height: 80%;
+  width: 80%;
+  border: 1px solid purple;
+}
+
+#artButton {
+  border: 1px solid orange;
+  margin-bottom: 2%;
+}
+
+#artwork {
+  height: 75%;
+  width: 80%;
+  border: 1px solid red;
+}
+
+// Individual dynamically-created divs
+.letterBox {
+  height: 40px;
+  width: 40px;
+  border: 1px solid;
+  // padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Artwork section
+#artwork {
+  height: 425px;
+  margin: 0 auto;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//

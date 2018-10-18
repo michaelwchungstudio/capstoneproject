@@ -8,28 +8,60 @@
   </head>
   <body>
 
+    <!-- Main Wrapper -->
     <div class='wrapper'>
-      <div id='guessWord'></div>
-      <br>
-      <br>
-      <div class='playerInputSec'>
-        <input type='text' id='wordInput'></input>
-        <input type='submit' class='gameButton' id='submitButton'></input>
-        <input type='button' value='Show Artwork' class='gameButton' id='artButton'></input>
-        <input type='button' value='Next Word' class='gameButton' id='nextButton'></input>
-        <input type='button' value='Reset' class='gameButton' id='resetButton'></input>
+      <!-- Sidebar -->
+      <div class='sidebar'>
+        <!-- Title -->
+        <div class='titleSec'>
+          <h1 id='gameTitle'>NAME THE ARTIST</h1>
+          <div id='titleUnderline'></div>
+        </div>
+        <div class='nextArtistSec'>
+          <div class='gameButton' id='nextButton'>NEXT WORD</div>
+        </div>
+        <!-- Letter Input Display -->
+        <div class='letterSec'>
+          <h2 class='sidebarSecHeader' id='letterTitle'>Letter</h2>
+          <div id='letterInput'>_</div>
+        </div>
+        <!-- Word Guess Display -->
+        <div class='guessWordSec'>
+          <h2 class='sidebarSecHeader' id='guessWordTitle'>Guess Word</h2>
+          <input type='text' id='wordInput'></input>
+          <div class='gameButton' id='submitButton'>SUBMIT</div>
+        </div>
+        <!-- Statistics -->
+        <div class='statsSec'>
+          <h2 class='sidebarSecHeader' id='guessLeftTitle'>Guesses Remaining</h2>
+          <p class='playerStats' id='playerGuesses'>7</p>
+          <h2 class='sidebarSecHeader' id='winsTitle'>Wins</h2>
+          <p class='playerStats' id='playerWins'>0</p>
+        </div>
+        <!-- Reset / Next -->
+        <div class='resetSec'>
+          <div class='gameButton' id='resetButton'>RESET</div>
+        </div>
       </div>
-      <br>
-      <br>
-      <div id='wordHint'></div>
-      <br>
-      <br>
-      <div id='artwork'></div>
-      <br>
-      <div id='letterInput'>_</div>
-      <br>
-      <div id='playerGuesses'>Guesses: 7</div>
-      <div id='playerWins'>Wins: 0</div>
+      <!-- Main Content -->
+      <div class='maincontent'>
+        <!-- Guess Display -->
+        <div class='guessDisplaySec'>
+          <div id='guessDisplay'></div>
+        </div>
+        <!-- Hint -->
+        <div class='hintSec'>
+          <div id='wordHintSec'>
+            <div id='wordHint'></div>
+          </div>
+        </div>
+        <!-- Artwork -->
+        <div class='artworkSec'>
+          <div class='gameButton' id='artButton'>SHOW ARTWORK</div>
+          <div id='artwork'>
+          </div>
+        </div>
+      </div>
     </div>
 
   <script type="text/javascript" src="index.js"></script>

@@ -41,7 +41,7 @@ function getWord() {
 // + generates the 'div's that hold each value of 'guessWord'
 function createGuessWord() {
   // Empties the previous 'div's if there are any
-  $("#guessWord").empty();
+  $("#guessDisplay").empty();
   $("#wordHint").empty();
 
   // For each character in 'theWord', create a 'div' with class: letterBox and id: box + i
@@ -55,7 +55,7 @@ function createGuessWord() {
 
       guessWord.push("_");
 
-      $("#guessWord").append(tempBox);
+      $("#guessDisplay").append(tempBox);
     }
     // If it's a space
     else if(theWord[i] == " "){
@@ -66,7 +66,7 @@ function createGuessWord() {
 
       guessWord.push(" ");
 
-      $("#guessWord").append(tempBox);
+      $("#guessDisplay").append(tempBox);
     }
     // If it's a symbol
     else {
@@ -77,7 +77,7 @@ function createGuessWord() {
 
       guessWord.push(theWord[i]);
 
-      $("#guessWord").append(tempBox);
+      $("#guessDisplay").append(tempBox);
     }
   }
 }
@@ -110,7 +110,7 @@ function checkLetter(letter) {
     // If not, guess left decreases by one, div updates correspondingly
     else {
       numGuessesLeft--;
-      $("#playerGuesses").text("Guesses: " + numGuessesLeft);
+      $("#playerGuesses").text(numGuessesLeft);
     }
   }
 }
@@ -126,7 +126,7 @@ function checkWord(word) {
       if(wordCopy[z].toLowerCase() !== theWord[z].toLowerCase()) {
         isEqual = false;
         numGuessesLeft--;
-        $("#playerGuesses").text("Guesses: " + numGuessesLeft);
+        $("#playerGuesses").text(numGuessesLeft);
         break;
       }
     }
@@ -134,7 +134,7 @@ function checkWord(word) {
   else {
     isEqual = false;
     numGuessesLeft--;
-    $("#playerGuesses").text("Guesses: " + numGuessesLeft);
+    $("#playerGuesses").text(numGuessesLeft);
   }
 
   // if the two words are equal, set the guess word to equal the word and change all the boxes to reflect the correct letter
@@ -173,7 +173,7 @@ function winCheck() {
     getArtwork();
 
     numWins++;
-    $("#playerWins").text("Wins: " + numWins);
+    $("#playerWins").text(numWins);
 
     // Remove artist, hint, and artwork from arrays
     arrayOfArtists.splice(artistIndex, 1);
@@ -206,7 +206,7 @@ function loseCheck() {
 function startRound() {
   isPlaying = true;
   numGuessesLeft = 7;
-  $("#playerGuesses").text("Guesses: " + numGuessesLeft);
+  $("#playerGuesses").text(numGuessesLeft);
   clearWordInput();
   clearLetterInput();
   clearHint();
@@ -251,8 +251,8 @@ $("#resetButton").click(function() {
   numGuessesLeft = 7;
   numWins = 0;
 
-  $("#playerWins").text("Wins: " + numWins);
-  $("#playerGuesses").text("Guesses: " + numGuessesLeft);
+  $("#playerWins").text(numWins);
+  $("#playerGuesses").text(numGuessesLeft);
 
   startRound();
 })
@@ -260,7 +260,7 @@ $("#resetButton").click(function() {
 // track keypress, display letter
 $(document).keypress(function(l) {
   if(/[a-zA-Z]/.test(l.key) && l.keyCode !== 13) {
-    $("#letterInput").text(l.key);
+    $("#letterInput").text(l.key.toUpperCase());
   }
 })
 
