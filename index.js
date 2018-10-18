@@ -84,21 +84,17 @@ function createGuessWord() {
 
 // Function that grabs a hint from array equal to corresponding index
 function getHint() {
-  if(isPlaying) {
-    $("#wordHint").text(arrayOfHints[artistIndex]);
-  }
+  $("#wordHint").text(arrayOfHints[artistIndex]);
 }
 
 // Function that grabs the artwork from array equal to corresponding index
 function getArtwork() {
-  if(isPlaying) {
-    $("#artwork").css({
-      'background-image': 'url(' + arrayOfArtwork[artistIndex] + ')'
-    });
-  }
+  $("#artwork").css({
+    'background-image': 'url(' + arrayOfArtwork[artistIndex] + ')'
+  });
 }
 
-// Checks a letter (letter will be drawn from input - see #submitButton Event Listener)
+// Checks if a letter (letter will be drawn from input) is in the word
 function checkLetter(letter) {
   // Checks if the input is a letter
   if(/[a-zA-Z]/.test(letter)) {
@@ -119,9 +115,40 @@ function checkLetter(letter) {
   }
 }
 
+// checks if the word (drawn from input) is the correct word
+function checkWord(word) {
+  var wordCopy = word.split("");
+  var isEqual = true;
+
+  // compares each letter - if not the same, break out of the loop and set the boolean to false => next if statement will not trigger, subtract one guess
+  if(wordCopy.length == theWord.length) {
+    for(let z = 0; z < wordCopy.length; z++) {
+      if(wordCopy[z].toLowerCase() !== theWord[z].toLowerCase()) {
+        isEqual = false;
+        numGuessesLeft--;
+        $("#playerGuesses").text("Guesses: " + numGuessesLeft);
+        break;
+      }
+    }
+  }
+  else {
+    isEqual = false;
+    numGuessesLeft--;
+    $("#playerGuesses").text("Guesses: " + numGuessesLeft);
+  }
+
+  // if the two words are equal, set the guess word to equal the word and change all the boxes to reflect the correct letter
+  if(isEqual) {
+    guessWord = theWord;
+    for(let w = 0; w < guessWord.length; w++) {
+      $("#box" + w).text(theWord[w]);
+    }
+  }
+}
+
 // Simple clearing functions
-function clearInput() {
-  $("#letterInput").val('');
+function clearWordInput() {
+  $("#wordInput").val('');
 }
 
 function clearHint() {
@@ -134,12 +161,16 @@ function clearArtwork() {
   });
 }
 
+function clearLetterInput() {
+  $("#letterInput").text('_');
+}
+
 // Checks if the user has won
 function winCheck() {
   if(guessWord.indexOf("_") == -1) {
     alert("You have won!");
     isPlaying = false;
-    clearHint();
+    getArtwork();
 
     numWins++;
     $("#playerWins").text("Wins: " + numWins);
@@ -156,6 +187,7 @@ function loseCheck() {
   if(numGuessesLeft == 0) {
     alert("Nice try!");
     isPlaying = false;
+    getArtwork();
 
     // Displays the word for the user after loss
     for(let y = 0; y < theWord.length; y++) {
@@ -165,6 +197,7 @@ function loseCheck() {
     // Remove artist and hint from arrays
     arrayOfArtists.splice(artistIndex, 1);
     arrayOfHints.splice(artistIndex, 1);
+    arrayOfArtwork.splice(artistIndex, 1);
   }
 }
 
@@ -174,6 +207,8 @@ function startGame() {
   isPlaying = true;
   numGuessesLeft = 7;
   $("#playerGuesses").text("Guesses: " + numGuessesLeft);
+  clearWordInput();
+  clearLetterInput();
   clearHint();
   clearArtwork();
   getWord();
@@ -190,20 +225,50 @@ $("#startButton").click(function() {
 })
 
 $("#artButton").click(function() {
-  getArtwork();
+  if(isPlaying) {
+    getArtwork();
+  }
 })
 
 $("#submitButton").click(function() {
-  checkLetter($("#letterInput").val());
-  clearInput();
-
   if(isPlaying) {
+    checkWord($("#wordInput").val());
+    clearWordInput();
+
     setTimeout(function() {
       winCheck();
       loseCheck();
     })
   }
 })
+
+// track keypress, display letter
+$(document).keypress(function(l) {
+  if(/[a-zA-Z]/.test(l.key) && l.keyCode !== 13) {
+    $("#letterInput").text(l.key);
+  }
+})
+
+$(document).keypress(function(e) {
+  if(isPlaying && /[a-zA-Z]/.test($("#letterInput").text()) && e.keyCode == 13) {
+    checkLetter($("#letterInput").text());
+    clearLetterInput();
+
+    if(isPlaying) {
+      setTimeout(function() {
+        winCheck();
+        loseCheck();
+      })
+    }
+  }
+})
+
+// document.addEventListener("keypress", function(e){
+//     console.log(e.key)
+//     if(e.key = /[a-z]/){
+//         compareWordAgainstLetter(daWord[counter],e.key.toString())
+//     }
+// })
 
 // Try adding functionality where typing one letter will match a div's content (ex. past mini-project) and upon pressing ENTER will trigger what is currently the submit button's function.
 
