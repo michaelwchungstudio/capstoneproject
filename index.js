@@ -203,7 +203,7 @@ function loseCheck() {
 
 // Main function - starts the game and acts as the "next" button
 // Possibly try setting a timeout so that after 5 - 10 seconds, after displaying everything (if loss or win), this function or "next" button is triggered
-function startGame() {
+function startRound() {
   isPlaying = true;
   numGuessesLeft = 7;
   $("#playerGuesses").text("Guesses: " + numGuessesLeft);
@@ -220,16 +220,6 @@ function startGame() {
 }
 
 // Event Listeners
-$("#startButton").click(function() {
-  startGame();
-})
-
-$("#artButton").click(function() {
-  if(isPlaying) {
-    getArtwork();
-  }
-})
-
 $("#submitButton").click(function() {
   if(isPlaying) {
     checkWord($("#wordInput").val());
@@ -242,6 +232,31 @@ $("#submitButton").click(function() {
   }
 })
 
+$("#artButton").click(function() {
+  if(isPlaying) {
+    getArtwork();
+  }
+})
+
+$("#nextButton").click(function() {
+  startRound();
+})
+
+// On click, resets the game
+$("#resetButton").click(function() {
+  arrayOfArtists = arrayOfArtistsCopy.slice(0, arrayOfArtistsCopy.length);
+  arrayOfHints = arrayOfHintsCopy.slice(0, arrayOfHintsCopy.length);
+  arrayOfArtwork = arrayOfArtworkCopy.slice(0, arrayOfArtworkCopy.length);
+
+  numGuessesLeft = 7;
+  numWins = 0;
+
+  $("#playerWins").text("Wins: " + numWins);
+  $("#playerGuesses").text("Guesses: " + numGuessesLeft);
+
+  startRound();
+})
+
 // track keypress, display letter
 $(document).keypress(function(l) {
   if(/[a-zA-Z]/.test(l.key) && l.keyCode !== 13) {
@@ -249,6 +264,7 @@ $(document).keypress(function(l) {
   }
 })
 
+// on pressing 'enter', will check the keypress value as letter
 $(document).keypress(function(e) {
   if(isPlaying && /[a-zA-Z]/.test($("#letterInput").text()) && e.keyCode == 13) {
     checkLetter($("#letterInput").text());
@@ -263,12 +279,16 @@ $(document).keypress(function(e) {
   }
 })
 
-// document.addEventListener("keypress", function(e){
-//     console.log(e.key)
-//     if(e.key = /[a-z]/){
-//         compareWordAgainstLetter(daWord[counter],e.key.toString())
-//     }
-// })
+// when in the input box, stop the above keypress listening
+$('#wordInput').keypress(function(e) {
+    e.stopPropagation();
+});
+
+// On load, start the game
+$(window).on('load', function() {
+  startRound();
+})
+
 
 // Try adding functionality where typing one letter will match a div's content (ex. past mini-project) and upon pressing ENTER will trigger what is currently the submit button's function.
 
