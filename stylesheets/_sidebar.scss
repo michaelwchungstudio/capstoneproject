@@ -16,6 +16,7 @@
 // Title
 #gameTitle {
   font-size: 2.25em;
+  font-weight: 600;
   letter-spacing: 2px;
   color: $light-mint;
   text-shadow: -1px 0 $dark-grey, 0 1px $dark-grey, 1px 0 $dark-grey, 0 -1px $dark-grey;
@@ -31,6 +32,7 @@
 // Affects all sidebar section headers
 .sidebarSecHeader {
   font-size: 1.15em;
+  font-weight: 600;
   color: $dark-grey;
   text-decoration: underline;
 }
@@ -60,8 +62,8 @@
 
 // Guess Word Input
 #wordInput {
-  width: 65%;
-  height: 18%;
+  width: 70%;
+  height: 19%;
   font-size: 1.3em;
   margin: 10% 0 5% 0;
   border: 1px solid;
@@ -70,7 +72,7 @@
 
 // Player stats
 .playerStats {
-  font-size: 2em;
+  font-size: 2.25em;
   color: $light-mint;
   text-shadow: -1px 0 $dark-grey, 0 1px $dark-grey, 1px 0 $dark-grey, 0 -1px $dark-grey;
   font-weight: 600;
