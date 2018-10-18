@@ -1,18 +1,24 @@
 var arrayOfArtists = ['Vincent Van Gogh', 'Banksy', 'Michelangelo', 'Pablo Picasso', 'Andy Warhol', 'Leonardo Da Vinci', 'Claude Monet', 'Jackson Pollock', 'Mark Rothko', 'Roy Lichtenstein', 'Salvador Dali', "Georgia O'Keefe"];
-var arrayOfArtistsCopy = arrayOfArtists;
+var arrayOfArtistsCopy = arrayOfArtists.slice(0, arrayOfArtists.length);
 
 var arrayOfHints = ['Dutch Post-Impressionist painter whose works are characterized by bold colors and dramatic brushstrokes. Arguably the most famous painter in the history of Western art.', 'Street artist. Often implements satire, dark humor, and political/social commentary with a distinctive stenciling technique.', 'Italian sculptor and painter during the High Renaissance. His impassioned, highly personal style eventually lead to the development of Mannerism.', "Spanish artist most known for co-founding the Cubist movement, the collage, the invention of the 'assemblage, and a wide variety of artistic styles.", 'American pop artist that explored the relationship between artistic expression, celebrity culture, and advertising.', 'Italian polymath, mastering multiple areas of interest such as painting, invention, sculpting, biology, mathematics, anatomy, etc. He produced what is widely considered the most famous painting ever created.', 'French painter and founder of French Impressionism. He is known for his exceptional understanding and portrayal of the effects of light on color and of the juxtaposition of colors with each other.', "American painter and major figure of the Abstract Expressionist movement. Most known for his unique style of 'drip' painting.", 'American artist famous for his large-scale color field paintings.', 'American pop artist, often producing works with precise compositions that documented while they parodied - a concept inspired by the comic strip.', 'Prominent Spanish surrealist with expansive skills in painting, sculpture, and film. Many considered his personality, mannerisms, and behavior to be rather eccentric and grandiose - especially indicative of his wild imagination.', 'American artist best known for her paintings of enlarged flowers, often evoking veiled representations of female genitalia.'];
-var arrayOfHintsCopy = arrayOfHints;
+var arrayOfHintsCopy = arrayOfHints.slice(0, arrayOfHints.length);
 
 var theWord = [];
 var guessWord = [];
 var artistIndex = 0;
 var isPlaying = false;
-var numGuessesLeft = 5;
+var numGuessesLeft = 7;
 var numWins = 0;
 
 // Function that retrieves a random word from the array
 function getWord() {
+  // Resets array of artists and hints if depleted
+  if(arrayOfArtists.length == 0) {
+    arrayOfArtists = arrayOfArtistsCopy.slice(0, arrayOfArtistsCopy.length);
+    arrayOfHints = arrayOfHintsCopy.slice(0, arrayOfHintsCopy.length);
+  }
+
   // Generates a random number between 0 and arrayOfArtists.length
   artistIndex = Math.floor(Math.random() * arrayOfArtists.length);
 
@@ -89,6 +95,7 @@ function checkLetter(letter) {
         }
       }
     }
+    // If not, guess left decreases by one, div updates correspondingly
     else {
       numGuessesLeft--;
       $("#playerGuesses").text("Guesses: " + numGuessesLeft);
@@ -113,6 +120,10 @@ function winCheck() {
 
     numWins++;
     $("#playerWins").text("Wins: " + numWins);
+
+    // Remove artist and hint from arrays
+    arrayOfArtists.splice(artistIndex, 1);
+    arrayOfHints.splice(artistIndex, 1);
   }
 }
 
@@ -121,16 +132,26 @@ function loseCheck() {
   if(numGuessesLeft == 0) {
     alert("Nice try!");
     isPlaying = false;
-    clearHint();
+
+    // Displays the word for the user after loss
+    for(let y = 0; y < theWord.length; y++) {
+      $("#box" + y).text(theWord[y]);
+    }
+
+    // Remove artist and hint from arrays
+    arrayOfArtists.splice(artistIndex, 1);
+    arrayOfHints.splice(artistIndex, 1);
   }
 }
 
 function startGame() {
-  numGuessesLeft = 5;
-  $("#playerGuesses").text("Guesses: 5");
+  isPlaying = true;
+  numGuessesLeft = 7;
+  $("#playerGuesses").text("Guesses: " + numGuessesLeft);
+  clearHint();
   getWord();
   createGuessWord();
-  isPlaying = true;
+  getHint();
 
   console.log(theWord);
   console.log(guessWord);
