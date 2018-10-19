@@ -2,7 +2,8 @@
 .sidebar {
   display: grid;
   grid-template-rows: 0.4fr 0.25fr 1fr 0.6fr 0.55fr 0.25fr;
-  background-color: $light-grey;
+  background-color: $bone;
+  border-right: 2px solid $coal;
 }
 
 // Immediate children divs center content
@@ -18,22 +19,20 @@
   font-size: 2.25em;
   font-weight: 600;
   letter-spacing: 2px;
-  color: $light-mint;
-  text-shadow: -1px 0 $dark-grey, 0 1px $dark-grey, 1px 0 $dark-grey, 0 -1px $dark-grey;
+  color: $coal;
 }
 
 #titleUnderline {
-  height: 5px;
+  height: 3px;
   width: 90%;
-  background-color: $light-mint;
-  border: 1px solid $dark-grey;
+  background-color: $coal;
 }
 
 // Affects all sidebar section headers
 .sidebarSecHeader {
   font-size: 1.15em;
   font-weight: 600;
-  color: $dark-grey;
+  color: $coal;
   text-decoration: underline;
 }
 
@@ -41,23 +40,23 @@
 .gameButton {
   padding: 7px 10px;
   cursor: pointer;
-  background-color: $light-mint;
-  border: 1px solid $dark-grey;
-  color: $dark-grey;
+  background-color: $bone;
+  border: 1px solid $coal;
+  border-radius: 20px;
+  color: $coal;
   font-size: 1.1em;
 }
 
 .gameButton:hover {
-  background-color: $dark-grey;
-  border: 1px solid $light-mint;
-  color: $light-mint;
+  background-color: $coal;
+  border: 1px solid $bone;
+  color: $bone;
 }
 
 // Letter Input
 #letterInput {
   font-size: 11em;
-  color: $light-mint;
-  text-shadow: -1px 0 $dark-grey, 0 1px $dark-grey, 1px 0 $dark-grey, 0 -1px $dark-grey;
+  color: $coal;
 }
 
 // Guess Word Input
@@ -73,8 +72,7 @@
 // Player stats
 .playerStats {
   font-size: 2.25em;
-  color: $light-mint;
-  text-shadow: -1px 0 $dark-grey, 0 1px $dark-grey, 1px 0 $dark-grey, 0 -1px $dark-grey;
+  color: $coal;
   font-weight: 600;
   margin: 1% 0 2% 0;
 }
