@@ -1,9 +1,10 @@
 // Sidebar Grid
 .sidebar {
   display: grid;
-  grid-template-rows: 0.4fr 0.25fr 1fr 0.6fr 0.55fr 0.25fr;
+  grid-template-rows: 0.4fr 0.25fr 1fr 0.7fr 0.55fr 0.25fr;
   background-color: $bone;
   border-right: 2px solid $coal;
+  min-width: 250px;
 }
 
 // Immediate children divs center content
@@ -24,7 +25,8 @@
 
 #titleUnderline {
   height: 3px;
-  width: 90%;
+  width: 35%;
+  margin-top: 2%;
   background-color: $coal;
 }
 
@@ -64,7 +66,7 @@
   width: 70%;
   height: 19%;
   font-size: 1.3em;
-  margin: 10% 0 5% 0;
+  margin: 12.5% 0 5% 0;
   border: 1px solid;
   text-align: center;
 }

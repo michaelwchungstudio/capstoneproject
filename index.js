@@ -60,7 +60,7 @@ function createGuessWord() {
     // If it's a space
     else if(theWord[i] == " "){
       var tempBox = document.createElement("div");
-      tempBox.className = "letterBox";
+      tempBox.className = "spaceBox";
       tempBox.id = "box" + i;
       tempBox.innerHTML = " ";
 
@@ -71,7 +71,7 @@ function createGuessWord() {
     // If it's a symbol
     else {
       var tempBox = document.createElement("div");
-      tempBox.className = "letterBox";
+      tempBox.className = "symbolBox";
       tempBox.id = "box" + i;
       tempBox.innerHTML = theWord[i];
 
@@ -168,7 +168,7 @@ function clearLetterInput() {
 // Checks if the user has won
 function winCheck() {
   if(guessWord.indexOf("_") == -1) {
-    alert("You have won!");
+    winModal();
     isPlaying = false;
     getArtwork();
 
@@ -185,7 +185,7 @@ function winCheck() {
 // Checks if the user has no more incorrect guesses available
 function loseCheck() {
   if(numGuessesLeft == 0) {
-    alert("Nice try!");
+    lossModal();
     isPlaying = false;
     getArtwork();
 
@@ -199,6 +199,44 @@ function loseCheck() {
     arrayOfHints.splice(artistIndex, 1);
     arrayOfArtwork.splice(artistIndex, 1);
   }
+}
+
+// Pop-up for win
+function winModal() {
+  var modalBox = document.createElement('div');
+  modalBox.className = "modalBox";
+
+  var modalText = document.createElement('div');
+  modalText.className = "modalText";
+  modalText.innerHTML = "Nice! You figured it out!"
+
+  var modalButton = document.createElement('div');
+  modalButton.classList.add("gameButton");
+  modalButton.id = "exitModalButton";
+  modalButton.innerHTML = "CONTINUE";
+
+  $(".mainContent").append(modalBox);
+  $(".modalBox").append(modalText);
+  $(".modalBox").append(modalButton);
+}
+
+// Pop-up for loss
+function lossModal() {
+  var modalBox = document.createElement('div');
+  modalBox.className = "modalBox";
+
+  var modalText = document.createElement('div');
+  modalText.className = "modalText";
+  modalText.innerHTML = "Nice try :-)"
+
+  var modalButton = document.createElement('div');
+  modalButton.classList.add("gameButton");
+  modalButton.id = "exitModalButton";
+  modalButton.innerHTML = "CONTINUE";
+
+  $(".mainContent").append(modalBox);
+  $(".modalBox").append(modalText);
+  $(".modalBox").append(modalButton);
 }
 
 // Main function - starts the game and acts as the "next" button
@@ -242,7 +280,7 @@ $("#nextButton").click(function() {
   startRound();
 })
 
-// On click, resets the game
+// on click, resets the game
 $("#resetButton").click(function() {
   arrayOfArtists = arrayOfArtistsCopy.slice(0, arrayOfArtistsCopy.length);
   arrayOfHints = arrayOfHintsCopy.slice(0, arrayOfHintsCopy.length);
@@ -270,28 +308,26 @@ $(document).keypress(function(e) {
     checkLetter($("#letterInput").text());
     clearLetterInput();
 
-    if(isPlaying) {
-      setTimeout(function() {
-        winCheck();
-        loseCheck();
-      })
-    }
+    winCheck();
+    loseCheck();
   }
 })
 
 // when in the input box, stop the above keypress listening
 $('#wordInput').keypress(function(e) {
-    e.stopPropagation();
+  e.stopPropagation();
 });
+
+// on click, exits the modal
+window.addEventListener('click', function(e) {
+  if(e.target.id == 'exitModalButton') {
+    $('.modalBox').hide();
+
+    startRound();
+  }
+})
 
 // On load, start the game
 $(window).on('load', function() {
   startRound();
-})
-
-
-// Try adding functionality where typing one letter will match a div's content (ex. past mini-project) and upon pressing ENTER will trigger what is currently the submit button's function.
-
-// One input box to try and guess the word outright?
-
-// Style it better
+});
