@@ -10,7 +10,7 @@
 // Main Content Grid
 .maincontent {
   display: grid;
-  grid-template-rows: 0.3fr 0.19fr 1fr;
+  grid-template-rows: 0.28fr 0.19fr 1fr;
 }
 
 // Immediate children divs center content
@@ -35,13 +35,27 @@
 .letterBox {
   height: 75px;
   width: 75px;
-  background-color: $light-grey;
-  color: $light-mint;
+  background-color: $bone;
+  color: $coal;
   font-size: 2.5em;
   font-weight: 600;
+  border-top: 1px solid $coal;
+  border-bottom: 1px solid $coal;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.letterBox:first-of-type {
+  border-left: 1px solid $coal;
+  border-top-left-radius: 2.5px;
+  border-bottom-left-radius: 2.5px;
+}
+
+.letterBox:last-of-type {
+  border-right: 1px solid $coal;
+  border-top-right-radius: 2.5px;
+  border-bottom-right-radius: 2.5px;
 }
 
 // Hint Section
