@@ -42,6 +42,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-shadow: -1px 0 $dark-grey, 0 1px $dark-grey, 1px 0 $dark-grey, 0 -1px $dark-grey;
 }
 
 // Hint Section
