@@ -35,14 +35,14 @@
 .letterBox {
   height: 75px;
   width: 75px;
-  background-color: $light-grey;
-  color: $light-mint;
+  background-color: $steel-blue;
+  color: $bone;
   font-size: 2.5em;
   font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-shadow: -1px 0 $dark-grey, 0 1px $dark-grey, 1px 0 $dark-grey, 0 -1px $dark-grey;
+  text-shadow: -1px 0 $coal, 0 1px $coal, 1px 0 $coal, 0 -1px $coal;
 }
 
 // Hint Section
