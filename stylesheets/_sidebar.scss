@@ -2,7 +2,8 @@
 .sidebar {
   display: grid;
   grid-template-rows: 0.4fr 0.25fr 1fr 0.6fr 0.55fr 0.25fr;
-  background-color: $steel-blue;
+  background-color: $bone;
+  border-right: 2px solid $coal;
 }
 
 // Immediate children divs center content
@@ -18,15 +19,13 @@
   font-size: 2.25em;
   font-weight: 600;
   letter-spacing: 2px;
-  color: $bone;
-  text-shadow: -1px 0 $coal, 0 1px $coal, 1px 0 $coal, 0 -1px $coal;
+  color: $coal;
 }
 
 #titleUnderline {
-  height: 5px;
+  height: 3px;
   width: 90%;
-  background-color: $bone;
-  border: 1px solid $coal;
+  background-color: $coal;
 }
 
 // Affects all sidebar section headers
@@ -43,6 +42,7 @@
   cursor: pointer;
   background-color: $bone;
   border: 1px solid $coal;
+  border-radius: 20px;
   color: $coal;
   font-size: 1.1em;
 }
@@ -56,8 +56,7 @@
 // Letter Input
 #letterInput {
   font-size: 11em;
-  color: $bone;
-  text-shadow: -1px 0 $coal, 0 1px $coal, 1px 0 $coal, 0 -1px $coal;
+  color: $coal;
 }
 
 // Guess Word Input
@@ -73,8 +72,7 @@
 // Player stats
 .playerStats {
   font-size: 2.25em;
-  color: $bone;
-  text-shadow: -1px 0 $coal, 0 1px $coal, 1px 0 $coal, 0 -1px $coal;
+  color: $coal;
   font-weight: 600;
   margin: 1% 0 2% 0;
 }
