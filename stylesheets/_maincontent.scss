@@ -11,7 +11,7 @@
 .mainContent {
   display: grid;
   position: relative;
-  grid-template-rows: 0.28fr 0.19fr 1fr;
+  grid-template-rows: 0.25fr 0.19fr 1fr;
 }
 
 // Immediate children divs center content
@@ -36,7 +36,7 @@
 .letterBox {
   height: 60px;
   width: 60px;
-  background-color: $bone;
+  background-color: $ice;
   color: $coal;
   font-size: 2.25em;
   font-weight: 600;
@@ -50,7 +50,7 @@
 .spaceBox {
   height: 60px;
   width: 30px;
-  background-color: $bone;
+  background-color: $ice;
   color: $coal;
   border-top: 1px solid $coal;
   border-bottom: 1px solid $coal;
@@ -59,7 +59,7 @@
 .symbolBox {
   height: 60px;
   width: 30px;
-  background-color: $bone;
+  background-color: $ice;
   color: $coal;
   color: $coal;
   font-size: 2.25em;
@@ -110,13 +110,14 @@
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  margin-bottom: 4vh;
 }
 
 // Loss / Win Modal
 .modalBox {
   height: 15%;
   width: 30%;
-  background-color: $bone;
+  background-color: $off-white;
   margin-left: auto;
   margin-right: auto;
   border-top: 5px solid $coal;
@@ -126,7 +127,7 @@
   border-radius: 2.5px;
   text-align: center;
   position: absolute;
-  top: 32.5vh;
+  top: 29.5vh;
   left: 0;
   right: 0;
 }
@@ -135,4 +136,8 @@
   font-size: 1.5em;
   color: $coal;
   margin-bottom: 2.5vh;
+}
+
+#exitModalButton:hover {
+  background-color: $off-white;
 }

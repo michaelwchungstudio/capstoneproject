@@ -28,8 +28,8 @@ body {
 .sidebar {
   display: grid;
   grid-template-rows: 0.4fr 0.25fr 1fr 0.7fr 0.55fr 0.25fr;
-  background-color: #F8F1E5;
-  border-right: 2px solid #2F3131;
+  background-color: #E4FAFF;
+  border-right: 3.5px solid #2F3131;
   min-width: 250px; }
 
 .sidebar > div {
@@ -59,16 +59,15 @@ body {
 .gameButton {
   padding: 7px 10px;
   cursor: pointer;
-  background-color: #F8F1E5;
+  background-color: #E4FAFF;
   border: 1px solid #2F3131;
   border-radius: 20px;
   color: #2F3131;
-  font-size: 1.1em; }
+  font-size: 1.05em; }
 
 .gameButton:hover {
   background-color: #2F3131;
-  border: 1px solid #F8F1E5;
-  color: #F8F1E5; }
+  color: #E4FAFF; }
 
 #letterInput {
   font-size: 11em;
@@ -98,7 +97,7 @@ body {
 .mainContent {
   display: grid;
   position: relative;
-  grid-template-rows: 0.28fr 0.19fr 1fr; }
+  grid-template-rows: 0.25fr 0.19fr 1fr; }
 
 .mainContent > div {
   display: flex;
@@ -117,7 +116,7 @@ body {
 .letterBox {
   height: 60px;
   width: 60px;
-  background-color: #F8F1E5;
+  background-color: #E4FAFF;
   color: #2F3131;
   font-size: 2.25em;
   font-weight: 600;
@@ -130,7 +129,7 @@ body {
 .spaceBox {
   height: 60px;
   width: 30px;
-  background-color: #F8F1E5;
+  background-color: #E4FAFF;
   color: #2F3131;
   border-top: 1px solid #2F3131;
   border-bottom: 1px solid #2F3131; }
@@ -138,7 +137,7 @@ body {
 .symbolBox {
   height: 60px;
   width: 30px;
-  background-color: #F8F1E5;
+  background-color: #E4FAFF;
   color: #2F3131;
   color: #2F3131;
   font-size: 2.25em;
@@ -179,12 +178,13 @@ body {
   width: 80%;
   background-position: center;
   background-size: contain;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  margin-bottom: 4vh; }
 
 .modalBox {
   height: 15%;
   width: 30%;
-  background-color: #F8F1E5;
+  background-color: #F9F9F9;
   margin-left: auto;
   margin-right: auto;
   border-top: 5px solid #2F3131;
@@ -194,7 +194,7 @@ body {
   border-radius: 2.5px;
   text-align: center;
   position: absolute;
-  top: 32.5vh;
+  top: 29.5vh;
   left: 0;
   right: 0; }
 
@@ -202,6 +202,9 @@ body {
   font-size: 1.5em;
   color: #2F3131;
   margin-bottom: 2.5vh; }
+
+#exitModalButton:hover {
+  background-color: #F9F9F9; }
 
 @media (min-width: 1451px) and (max-width: 1550px) {
   #gameTitle {

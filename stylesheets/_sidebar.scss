@@ -2,8 +2,8 @@
 .sidebar {
   display: grid;
   grid-template-rows: 0.4fr 0.25fr 1fr 0.7fr 0.55fr 0.25fr;
-  background-color: $bone;
-  border-right: 2px solid $coal;
+  background-color: $ice;
+  border-right: 3.5px solid $coal;
   min-width: 250px;
 }
 
@@ -42,17 +42,16 @@
 .gameButton {
   padding: 7px 10px;
   cursor: pointer;
-  background-color: $bone;
+  background-color: $ice;
   border: 1px solid $coal;
   border-radius: 20px;
   color: $coal;
-  font-size: 1.1em;
+  font-size: 1.05em;
 }
 
 .gameButton:hover {
   background-color: $coal;
-  border: 1px solid $bone;
-  color: $bone;
+  color: $ice;
 }
 
 // Letter Input

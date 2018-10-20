@@ -258,6 +258,7 @@ function startRound() {
 }
 
 // Event Listeners
+// Submit button will check the inputted word against theWord
 $("#submitButton").click(function() {
   if(isPlaying) {
     checkWord($("#wordInput").val());
@@ -270,12 +271,14 @@ $("#submitButton").click(function() {
   }
 })
 
+// Displays artwork as visual hint
 $("#artButton").click(function() {
   if(isPlaying) {
     getArtwork();
   }
 })
 
+// Cycles through array randomly
 $("#nextButton").click(function() {
   startRound();
 })
@@ -321,7 +324,7 @@ $('#wordInput').keypress(function(e) {
 // on click, exits the modal
 window.addEventListener('click', function(e) {
   if(e.target.id == 'exitModalButton') {
-    $('.modalBox').hide();
+    $('.modalBox').fadeOut('slow');
 
     startRound();
   }
