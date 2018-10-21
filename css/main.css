@@ -206,13 +206,13 @@ body {
 #exitModalButton:hover {
   background-color: #F9F9F9; }
 
-@media (min-width: 1451px) and (max-width: 1550px) {
+@media all and (min-width: 1451px) and (max-width: 1550px) {
   #gameTitle {
     font-size: 2em; } }
-@media (min-width: 1216px) and (max-width: 1450px) {
+@media all and (min-width: 1216px) and (max-width: 1450px) {
   #gameTitle {
     font-size: 1.8em; } }
-@media (max-width: 1215px) {
+@media all and (max-width: 1215px) {
   #gameTitle {
     font-size: 1.65em; } }
 
