@@ -20,10 +20,12 @@
   box-sizing: border-box;
   font-size: 15px;
   font-family: "DinOT";
-  color: #2F3131; }
+  color: #2F3131;
+}
 
 body {
-  background-color: #F9F9F9; }
+  background-color: #F9F9F9;
+}
 
 .sidebar {
   display: grid;
