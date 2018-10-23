@@ -8,7 +8,7 @@ On load, a random artist is selected and a textual description of his/her work a
 
 ### Artists
 
-Egon Schiele, Jasper Johns, Cy Twombly, Claes Oldenburg, Caravaggio, Wassily Kandinsky, Jean-Michel Basquiat, Takashi Murakami, Barbara Kruger, Gustav Klimt, Yayoi Kusama, Keith Haring, Edgar Degas, James Turrell, Richard Serra, Jeff Koons, Vincent Van Gogh, Banksy, Michelangelo, Pablo Picasso, Andy Warhol, Leonardo Da Vinci, Claude Monet, Jackson Pollock, Mark Rothko, Roy Lichtenstein, Salvador Dali, Georgia O'Keefe.
+Egon Schiele, Jasper Johns, Cy Twombly, Claes Oldenburg, Caravaggio, Wassily Kandinsky, Jean-Michel Basquiat, Takashi Murakami, Shepard Fairey, Barbara Kruger, Gustav Klimt, Yayoi Kusama, Keith Haring, Edgar Degas, James Turrell, Richard Serra, Jeff Koons, Vincent Van Gogh, Banksy, Michelangelo, Pablo Picasso, Andy Warhol, Leonardo Da Vinci, Claude Monet, Jackson Pollock, Mark Rothko, Roy Lichtenstein, Salvador Dali, Georgia O'Keefe.
 
 ## Built With
 
