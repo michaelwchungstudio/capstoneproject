@@ -1,6 +1,6 @@
 ![Site Ex. 1](siteimg/ex1.png)
 
-# Capstone Project
+# Name The Artist
 
 The goal is to create a single-page website application that allows the user to play a simple game of Wheel of Fortune / Hangman. The specific game I created is called 'Name the Artist' and requires the user to determine what artist matches the description and/or artwork shown.
 
