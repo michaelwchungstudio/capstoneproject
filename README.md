@@ -1,6 +1,6 @@
 ![Site Ex. 1](siteimg/ex1.png)
 
-![Site Ex. 2](siteimg/ex2.png)
+![Site Ex. 2](siteimg/ex4.png)
 
 # Capstone Project
 
@@ -12,7 +12,7 @@ On load, a random artist is selected and a textual description of his/her work a
 
 ![Site Ex. 3](siteimg/ex3.png)
 
-![Site Ex. 4](siteimg/ex4.png)
+![Site Ex. 4](siteimg/ex2.png)
 
 ### Artists
 
